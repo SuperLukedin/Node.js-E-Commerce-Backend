@@ -1,15 +1,20 @@
 const express = require('express')
-const UserProfile = require('../DB/UserProfile')
+const User = require('../DB/User')
 const router = express.Router()
-
+const bcrypt = require('bcrypt')
 router.post('/', async (req, res) => {
-    const {userName, orders} = req.body
-    let userProfile = {}
-    userProfile.userName = userName
-    userProfile.orders = orders
-    let userProfileModel = new UserProfile(userProfile)
-    await userProfileModel.save()
-    res.json(userProfileModel)
+    try {
+        const {username, password} = req.body        
+        const hashedPassword = await bcrypt.hash(password, 10)
+        let user = {}
+        user.username = username
+        user.password = hashedPassword
+        let userModel = new User(user)
+        await userModel.save()
+        res.json({success: true, message: "register done!"})
+    } catch {
+        res.status(500).send()
+    }
 })
 
 module.exports = router

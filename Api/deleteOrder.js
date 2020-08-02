@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
         if(err) {
             res.send(err)
         } else {
-            result = {}
+            const result = {}
             result._id = id
             result.deleteDone = true
             res.json(result)

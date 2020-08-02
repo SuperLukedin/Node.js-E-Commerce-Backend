@@ -15,11 +15,13 @@ var router = express.Router()
 
 // APIs
 app.use('/api/addUser', require('./Api/AddUser'))
+app.use('/api/login', require('./Api/Login'))
+app.use('/api/logout', require('./Api/Logout'))
 app.use('/api/addProduct', require('./Api/AddProduct'))
 app.use('/api/addOrder', require('./Api/AddOrder'))
 app.use('/api/getOrder', require('./Api/getOrder'))
 app.use('/api/listProduct', require('./Api/ListProduct'))
-app.use('/api/getUser', require('./Api/getUser'))
+// app.use('/api/getUser', require('./Api/getUser'))
 app.use('/api/deleteOrder', require('./Api/deleteOrder'))
 app.use('/api/deleteProduct', require('./Api/deleteProduct'))
 
