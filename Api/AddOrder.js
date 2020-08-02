@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
     order.numOfProducts = numOfProducts
     order.totalPrice = totalPrice
     order.products = product_ids
-    let orderModel = new Order(order)  // update id, poplulate,  nginx, PM2
+    let orderModel = new Order(order)
     await orderModel.save()
     res.json(orderModel)
 })
